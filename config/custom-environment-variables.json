@@ -1,0 +1,11 @@
+{
+    "app": {
+        "name": "APP_NAME"
+    },
+    "discord": {
+        "token": "DISCORD_TOKEN"
+    },
+    "logger": {
+        "level": "LOGGER_LEVEL"
+    }
+}
