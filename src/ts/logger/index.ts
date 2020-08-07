@@ -3,7 +3,7 @@ import * as config from 'config';
 
 let logger: Logger;
 
-const resolveLogger = (): Logger => {
+const generateLogger = (): Logger => {
     let loggerOpts: LoggerOptions = {
         name: config.get('app.name'),
         level: config.get('logging.level'),
@@ -11,9 +11,9 @@ const resolveLogger = (): Logger => {
     return Logger.createLogger(loggerOpts);
 }
 
-export default (): Logger => {
+export function resolveLogger(): Logger {
     if (logger === undefined) {
-        logger = resolveLogger();
+        logger = generateLogger();
     }
     return logger;
 }
