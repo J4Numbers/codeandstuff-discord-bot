@@ -6,7 +6,7 @@ module.exports = {
     token: undefined,
   },
   eventbrite: {
-    token: undefined,
+    token:  undefined,
     org_id: undefined,
   },
   logger: {
