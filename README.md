@@ -42,10 +42,27 @@ watchdog (at the moment).
 > interact with the bot.
 
 Before starting, ensure that you have installed at least version `12.x.x` of
-NodeJS onto your system. This is what will be used to run the bot.
+NodeJS onto your system. This is what will be used to run the bot. You will also
+need to take a note of your private Eventbrite token (as found [here][3]),
+create a new Discord project and take down the access token (as found [here][4]).
 
-To install and use, download the repository or package to your server and run
-the following commands:
+Once you have all of these, download the repository and create a new
+`config/local.js` file with the following information:
+
+```js
+module.exports = {
+  discord: {
+    token: '[MY_DISCORD_TOKEN]',
+  },
+  eventbrite: {
+    token: '[MY_EVENTBRITE_TOKEN]',
+    org_id: '[MY_ORG_ID]',
+  },
+}
+```
+
+Once you have created the configuration file, then run the following commands
+to start the bot:
 
 ```bash
 npm i
