@@ -1,16 +1,16 @@
-import config from "config";
-import {StandardTicketLookup} from "./standard-ticket-lookup";
-import {EventbriteTicketLookup} from "./eventbrite-ticket-lookup";
+import config from 'config';
+import {StandardEventLookup} from './standard-event-lookup';
+import {EventbriteEventLookup} from './eventbrite-event-lookup';
 
-let ticketLookup: StandardTicketLookup;
+let ticketLookup: StandardEventLookup;
 
-const generateTicketLookup = (): StandardTicketLookup => {
-    return new EventbriteTicketLookup(config.get('eventbrite'));
+const generateEventLookup = (): StandardEventLookup => {
+  return new EventbriteEventLookup(config.get('eventbrite'));
 };
 
-export function resolveTicketLookup(): StandardTicketLookup {
-    if (ticketLookup === undefined) {
-        ticketLookup = generateTicketLookup();
-    }
-    return ticketLookup;
+export function resolveTicketLookup(): StandardEventLookup {
+  if (ticketLookup === undefined) {
+    ticketLookup = generateEventLookup();
+  }
+  return ticketLookup;
 }
