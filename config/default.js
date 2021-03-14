@@ -4,6 +4,7 @@ module.exports = {
   },
   discord: {
     token: undefined,
+    welcome_channel: undefined,
   },
   eventbrite: {
     token:  undefined,

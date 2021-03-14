@@ -1,8 +1,10 @@
-import {Client, GuildMember, PartialGuildMember, TextChannel} from "discord.js";
+import config from 'config';
+import {Client, GuildMember, PartialGuildMember, TextChannel} from 'discord.js';
 
 const onGuildMemberAdd = (guildMember: GuildMember | PartialGuildMember) => {
   // Send the message to a designated channel on a server:
-  const channel = guildMember.guild.channels.cache.find(ch => ch.name === 'hello');
+  const channel = guildMember.guild.channels.cache
+    .find(ch => ch.id === config.get('discord.welcome_channel'));
   // Do nothing if the channel wasn't found on this server
   if (!channel || !(channel instanceof TextChannel)) return;
   // Send the message, mentioning the member
