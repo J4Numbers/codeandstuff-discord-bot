@@ -30,15 +30,16 @@ const onMessage = (incomingMessage: Message) => {
     firstname,
     lastname,
   })
-    .then((data: Ticket) => {
-      incomingMessage.guild?.member(incomingMessage.author)?.setNickname(`${firstname} ${lastname}`);
+    .then((ticket: Ticket) => {
+      log.info(`Found corresponding ticket for new joiner :: ${ticket.id}`);
+      incomingMessage.guild?.member(incomingMessage.author)?.setNickname(ticket.profile.name);
       // Add roles and change nickname of author
     })
     .catch(() => {
       channel.send(
         `${incomingMessage.author} - We're sorry, but we couldn't find ${firstname} ${lastname} ` +
-        `in our current event roster. Please make sure that you have signed up to our event and ` +
-        `that you have entered your name correctly.`,
+        `in the roster for any of our current events. Please make sure that you have signed up for an ` +
+        `event and that you have entered your name correctly.`,
       );
     });
 }
