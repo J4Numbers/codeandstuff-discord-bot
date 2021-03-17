@@ -1,12 +1,12 @@
 import Logger, {LoggerOptions} from 'bunyan';
-import * as config from 'config';
+import config from 'config';
 
 let logger: Logger;
 
 const generateLogger = (): Logger => {
   let loggerOpts: LoggerOptions = {
     name: config.get('app.name'),
-    level: config.get('logging.level'),
+    level: config.get('logger.level'),
   };
   return Logger.createLogger(loggerOpts);
 }

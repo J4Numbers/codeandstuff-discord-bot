@@ -21,8 +21,8 @@ export class TicketManager {
     });
     const allTickets = (await Promise.all(ticketsForAllEvents)).flat();
     const foundTickets = allTickets.filter((ticket) =>
-      ticket.profile.first_name === nameDetails.firstname
-      && ticket.profile.last_name === nameDetails.lastname
+      ticket.profile.first_name.toLowerCase() === nameDetails.firstname.toLowerCase()
+      && ticket.profile.last_name.toLowerCase() === nameDetails.lastname.toLowerCase()
     );
     if (foundTickets.length > 0) {
       return foundTickets[0];

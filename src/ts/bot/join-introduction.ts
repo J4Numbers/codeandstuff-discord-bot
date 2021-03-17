@@ -14,10 +14,10 @@ const onGuildMemberAdd = (guildMember: GuildMember | PartialGuildMember) => {
   log.info(`${guildMember.nickname} joined the server, welcoming!`);
   // Send the message, mentioning the member
   channel.send(
-    `Welcome to the server, @${guildMember}!\n\n`
+    `Welcome to the server, ${guildMember}!\n\n`
     + `Please enter the name you signed up to the event with in the format of: `
-    + `\`'!cas [firstname] [lastname]'\`. For example, if your name was John `
-    + 'Smith, you would enter:\n ```\n!cas John Smith\n```',
+    + `\`'!cas register [firstname] [lastname]'\`. For example, if your name was John `
+    + 'Smith, you would enter:\n ```\n!cas register John Smith\n```',
   );
 }
 

@@ -9,23 +9,27 @@ import resolveTicketManager from '../tickets';
 const log: Logger = resolveLogger();
 
 const ticketManager: TicketManager = resolveTicketManager();
-const registrationRegex: RegExp = /^!cas\s+([^ ])\s+([^ ])$/gi;
+const registrationRegex: RegExp = /^!cas\s+register\s+([^ ]+)\s+([^ ]+)$/gi;
 
 const onMessage = (incomingMessage: Message) => {
   // Retrieve the channel that the message came in on
   const channel = incomingMessage.channel;
   const message = incomingMessage.content;
+
   const extractedNames = registrationRegex.exec(message);
+  log.debug(`Received ${message} from ${channel.id}`);
+
   // Do nothing if the channel wasn't found on this server
   if (channel.id !== config.get('discord.welcome_channel') ||
     !(channel instanceof TextChannel) ||
     !extractedNames) return;
   // Attempt to resolve the person's name against Eventbrite
   // @ts-ignore
-  const firstname = extractedNames.groups[1];
+  const firstname = extractedNames[1];
   // @ts-ignore
-  const lastname = extractedNames.groups[2];
+  const lastname = extractedNames[2];
 
+  log.debug(`Looking up tickets in current events for '${firstname} ${lastname}'`);
   ticketManager.lookupTicketWithName({
     firstname,
     lastname,

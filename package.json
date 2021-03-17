@@ -8,7 +8,7 @@
     "compile": "tsc --project src/tsconfig.json",
     "quality:eslint": "eslint .",
     "quality:eslint:fix": "eslint . --fix",
-    "start": "node src/app.js",
+    "start": "node src/js/app.js",
     "test": "npm run test:js && npm run test:ts",
     "test:js": "nyc --all mocha --config test/.js.mocharc.js",
     "test:ts": "TS_NODE_PROJECT=./src/tsconfig.json nyc mocha --config test/.ts.mocharc.js src/ts/**/*.ts",

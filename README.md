@@ -35,6 +35,12 @@ watchdog (at the moment).
 
 ## How to use
 
+The bot will respond on a few events:
+
+* When someone new joins your server
+* When someone inputs a `!cas register` command in a specified channel
+* When someone inputs a `!cas debug` command
+
 ## How to install
 
 > This section is for people who would like to run the bot on their own
