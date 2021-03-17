@@ -1,4 +1,4 @@
-import { TicketProfile } from "./ticket-profile";
+import { TicketProfile } from './ticket-profile';
 
 export interface Ticket {
   id: string,
@@ -6,6 +6,6 @@ export interface Ticket {
   created: Date,
   profile: TicketProfile,
   ticket_class_name: string,
-};
+}
 
 export type Tickets = Array<Ticket>;

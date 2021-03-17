@@ -9,6 +9,6 @@ export interface Event {
   start: TimeZone,
   end: TimeZone,
   online_event: boolean,
-};
+}
 
 export type Events = Array<Event>;

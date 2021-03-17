@@ -1,10 +1,10 @@
 import config from 'config';
 import {Client, Message, TextChannel} from 'discord.js';
-import {resolveTicketLookup} from '../tickets';
-import {StandardTicketLookup} from '../tickets/standard-ticket-lookup';
-import {TicketLookup} from '../objects/ticket-lookup';
+import resolveEventLookup from '../events';
+import {StandardEventLookup} from '../events/standard-event-lookup';
+import {Ticket} from '../objects/ticket';
 
-const ticketLookupEngine: StandardTicketLookup = resolveTicketLookup();
+const ticketLookupEngine: StandardEventLookup = resolveEventLookup();
 const registrationRegex: RegExp = /^!cas\s+([^ ])\s+([^ ])$/gi;
 
 const onMessage = (incomingMessage: Message) => {

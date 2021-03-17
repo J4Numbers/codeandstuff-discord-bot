@@ -8,7 +8,7 @@ const generateEventLookup = (): StandardEventLookup => {
   return new EventbriteEventLookup(config.get('eventbrite'));
 };
 
-export function resolveTicketLookup(): StandardEventLookup {
+export default function resolveEventLookup(): StandardEventLookup {
   if (ticketLookup === undefined) {
     ticketLookup = generateEventLookup();
   }
