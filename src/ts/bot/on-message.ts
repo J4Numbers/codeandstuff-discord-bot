@@ -1,10 +1,14 @@
 import config from 'config';
 import {Client, Message, TextChannel} from 'discord.js';
-import resolveEventLookup from '../events';
-import {StandardEventLookup} from '../events/standard-event-lookup';
+import Logger from 'bunyan';
 import {Ticket} from '../objects/ticket';
+import resolveLogger from '../logger';
+import {TicketManager} from '../tickets/ticket-manager';
+import resolveTicketManager from '../tickets';
 
-const ticketLookupEngine: StandardEventLookup = resolveEventLookup();
+const log: Logger = resolveLogger();
+
+const ticketManager: TicketManager = resolveTicketManager();
 const registrationRegex: RegExp = /^!cas\s+([^ ])\s+([^ ])$/gi;
 
 const onMessage = (incomingMessage: Message) => {
@@ -22,25 +26,26 @@ const onMessage = (incomingMessage: Message) => {
   // @ts-ignore
   const lastname = extractedNames.groups[2];
 
-  ticketLookupEngine.lookupTicketWithName({
+  ticketManager.lookupTicketWithName({
     firstname,
     lastname,
   })
+    .then((data: Ticket) => {
+      incomingMessage.guild?.member(incomingMessage.author)?.setNickname(`${firstname} ${lastname}`);
+      // Add roles and change nickname of author
+    })
     .catch(() => {
       channel.send(
         `${incomingMessage.author} - We're sorry, but we couldn't find ${firstname} ${lastname} ` +
         `in our current event roster. Please make sure that you have signed up to our event and ` +
         `that you have entered your name correctly.`,
       );
-    })
-    .then((data: Ticket) => {
-      incomingMessage.guild?.member(incomingMessage.author)?.setNickname(`${firstname} ${lastname}`);
-      // Add roles and change nickname of author
     });
 }
 
 const register = (discordClient: Client): void => {
   discordClient.on('message', onMessage);
+  log.debug('Initiated event for new messages inside the server.');
 }
 
 export {

@@ -1,9 +1,9 @@
 import config from 'config';
 import {Client} from 'discord.js';
 import Logger from 'bunyan';
-import * as log_engine from '../logger';
+import resolveLogger from '../logger';
 
-const logger: Logger = log_engine.resolveLogger();
+const logger: Logger = resolveLogger();
 
 let discordBot: Client;
 
@@ -21,7 +21,7 @@ const generateDiscordBot = (): Client => {
   return discordClient;
 }
 
-export function resolveDiscordBot(): Client {
+export default function resolveDiscordBot(): Client {
   if (discordBot === undefined) {
     discordBot = generateDiscordBot();
   }

@@ -1,5 +1,9 @@
 import config from 'config';
 import {Client, GuildMember, PartialGuildMember, TextChannel} from 'discord.js';
+import Logger from 'bunyan';
+import resolveLogger from '../logger';
+
+const log: Logger = resolveLogger();
 
 const onGuildMemberAdd = (guildMember: GuildMember | PartialGuildMember) => {
   // Send the message to a designated channel on a server:
@@ -7,6 +11,7 @@ const onGuildMemberAdd = (guildMember: GuildMember | PartialGuildMember) => {
     .find(ch => ch.id === config.get('discord.welcome_channel'));
   // Do nothing if the channel wasn't found on this server
   if (!channel || !(channel instanceof TextChannel)) return;
+  log.info(`${guildMember.nickname} joined the server, welcoming!`);
   // Send the message, mentioning the member
   channel.send(
     `Welcome to the server, @${guildMember}!\n\n`
@@ -18,6 +23,7 @@ const onGuildMemberAdd = (guildMember: GuildMember | PartialGuildMember) => {
 
 const register = (discordClient: Client): void => {
   discordClient.on('guildMemberAdd', onGuildMemberAdd);
+  log.debug('Initiated event for new members joining the server.');
 }
 
 export {

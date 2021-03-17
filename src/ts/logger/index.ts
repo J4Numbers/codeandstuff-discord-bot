@@ -11,7 +11,7 @@ const generateLogger = (): Logger => {
   return Logger.createLogger(loggerOpts);
 }
 
-export function resolveLogger(): Logger {
+export default function resolveLogger(): Logger {
   if (logger === undefined) {
     logger = generateLogger();
   }
