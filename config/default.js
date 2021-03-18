@@ -1,14 +1,16 @@
 module.exports = {
   app: {
-    name:  'codeandstuff-discord-bot',
+    name: 'codeandstuff-discord-bot',
     debug: false,
   },
   discord: {
-    token:           undefined,
+    token: undefined,
     welcome_channel: undefined,
+    joined_channel: undefined,
+    attendee_role: undefined,
   },
   eventbrite: {
-    token:  undefined,
+    token: undefined,
     org_id: undefined,
   },
   logger: {

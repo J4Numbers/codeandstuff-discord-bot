@@ -1,9 +1,17 @@
 {
     "app": {
-        "name": "APP_NAME"
+        "name": "APP_NAME",
+        "debug": "APP_DEBUG"
     },
     "discord": {
-        "token": "DISCORD_TOKEN"
+        "token": "DISCORD_TOKEN",
+        "welcome_channel": "DISCORD_WELCOME_CHANNEL_ID",
+        "joined_channel": "DISCORD_JOINED_CHANNEL_ID",
+        "attendee_role": "DISCORD_ATTENDEE_ROLE_ID"
+    },
+    "eventbrite": {
+        "token": "EVENTBRITE_TOKEN",
+        "org_id": "EVENTBRITE_ORGANISATION_ID"
     },
     "logger": {
         "level": "LOGGER_LEVEL"

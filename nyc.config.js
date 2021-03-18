@@ -1,10 +1,10 @@
 module.exports = {
-  lines:            80,
-  statements:       80,
-  functions:        80,
-  branches:         80,
+  lines: 80,
+  statements: 80,
+  functions: 80,
+  branches: 80,
   'check-coverage': false,
-  exclude:          [
+  exclude: [
     'nyc.config.js',
     '.eslintrc.js',
     'coverage/**',
@@ -13,7 +13,7 @@ module.exports = {
     'src/js/**',
     'config/**',
   ],
-  reporter:         [
+  reporter: [
     'lcov',
     'cobertura',
     'text',

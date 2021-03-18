@@ -5,13 +5,14 @@ import {Ticket} from '../objects/ticket';
 import resolveLogger from '../logger';
 import {TicketManager} from '../tickets/ticket-manager';
 import resolveTicketManager from '../tickets';
+import {manageFoundJoiner, manageNotFoundJoiner} from './discord-workers';
 
 const log: Logger = resolveLogger();
 
 const ticketManager: TicketManager = resolveTicketManager();
 const registrationRegex: RegExp = /^!cas\s+register\s+([^ ]+)\s+([^ ]+)$/gi;
 
-const onMessage = (incomingMessage: Message) => {
+const onRegistrationMessage = (incomingMessage: Message) => {
   // Retrieve the channel that the message came in on
   const channel = incomingMessage.channel;
   const message = incomingMessage.content;
@@ -35,21 +36,18 @@ const onMessage = (incomingMessage: Message) => {
     lastname,
   })
     .then((ticket: Ticket) => {
-      log.info(`Found corresponding ticket for new joiner :: ${ticket.id}`);
-      incomingMessage.guild?.member(incomingMessage.author)?.setNickname(ticket.profile.name);
       // Add roles and change nickname of author
+      log.info(`Found corresponding ticket for new joiner :: ${ticket.id}`);
+      return manageFoundJoiner(incomingMessage, ticket);
     })
     .catch(() => {
-      channel.send(
-        `${incomingMessage.author} - We're sorry, but we couldn't find ${firstname} ${lastname} ` +
-        `in the roster for any of our current events. Please make sure that you have signed up for an ` +
-        `event and that you have entered your name correctly.`,
-      );
+      log.info(`Unable to find corresponding ticket for new joiner :: ${firstname} ${lastname}`);
+      return manageNotFoundJoiner(incomingMessage, { firstname, lastname });
     });
 }
 
 const register = (discordClient: Client): void => {
-  discordClient.on('message', onMessage);
+  discordClient.on('message', onRegistrationMessage);
   log.debug('Initiated event for new messages inside the server.');
 }
 

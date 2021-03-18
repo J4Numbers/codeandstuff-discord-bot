@@ -41,6 +41,13 @@ The bot will respond on a few events:
 * When someone inputs a `!cas register` command in a specified channel
 * When someone inputs a `!cas debug` command
 
+The following commands are available for interactive use:
+
+| command | Description |
+| ------- | ----------- |
+| `!cas register [firstname] [lastname]` | Register yourself into the server under this name |
+| `!cas debug joiner ` | Simulate a new joiner event (**DEBUG ONLY**) |
+
 ## How to install
 
 > This section is for people who would like to run the bot on their own
@@ -50,7 +57,11 @@ The bot will respond on a few events:
 Before starting, ensure that you have installed at least version `12.x.x` of
 NodeJS onto your system. This is what will be used to run the bot. You will also
 need to take a note of your private Eventbrite token (as found [here][3]),
-create a new Discord project and take down the access token (as found [here][4]).
+create a new Discord development application, assign it as a bot, and take down 
+the access token (as found [here][4]).
+
+[3]: https://www.eventbrite.co.uk/platform/api-keys?internal_ref=login 'Eventbrite API'
+[4]: https://discord.com/developers/applications 'Discord applications'
 
 Once you have all of these, download the repository and create a new
 `config/local.js` file with the following information:
@@ -59,6 +70,9 @@ Once you have all of these, download the repository and create a new
 module.exports = {
   discord: {
     token: '[MY_DISCORD_TOKEN]',
+    welcome_channel: '[WELCOME_CHANNEL_ID]',
+    joined_channel: '[JOINED_CHANNEL_ID]',
+    attendee_role: '[ATTENDEE_ROLE_ID]',
   },
   eventbrite: {
     token: '[MY_EVENTBRITE_TOKEN]',
@@ -66,6 +80,16 @@ module.exports = {
   },
 }
 ```
+
+Where the channel and role ids are taken from your server by right clicking on the various channels
+and roles and clicking 'Copy ID'.
+
+> Note: Copy ID only appears when a user has enabled 'Developer Mode' within the Appearance settings
+> of Discord (under advanced).
+
+* The _Welcome channel_ represents the channel that new users will join on entering the server.
+* The _Joined channel_ represents the channel that users will be placed in after verification.
+* The _Attendee role_ represents the role that users are granted after being verified.
 
 Once you have created the configuration file, then run the following commands
 to start the bot:

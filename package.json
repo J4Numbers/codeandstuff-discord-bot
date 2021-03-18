@@ -30,7 +30,7 @@
     "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "@j4numbers/eslint-base-config": "^1.1.8",
+    "@j4numbers/eslint-base-config": "^1.2.0",
     "@types/bunyan": "^1.8.6",
     "@types/chai": "^4.2.12",
     "@types/config": "0.0.36",
