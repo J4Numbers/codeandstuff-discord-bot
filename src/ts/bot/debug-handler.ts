@@ -7,7 +7,9 @@ const log: Logger = resolveLogger();
 const debugRegex = /^!cas\s+debug\s+joiner$/gi
 
 const handleDebugCalls = (incomingMessage: Message) => {
+  log.debug(`Received new message from ${incomingMessage.channel.id}`);
   if (debugRegex.test(incomingMessage.content)) {
+    log.debug('Noticed new request to mock a join event...');
     incomingMessage.client.emit('guildMemberAdd', incomingMessage.member as GuildMember);
   }
 }

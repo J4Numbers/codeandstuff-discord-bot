@@ -38,6 +38,7 @@ watchdog (at the moment).
 The bot will respond on a few events:
 
 * When someone new joins your server
+* When someone attempts to `@mention` the bot, or directly message it
 * When someone inputs a `!cas register` command in a specified channel
 * When someone inputs a `!cas event` command
 * When someone inputs a `!cas debug` command

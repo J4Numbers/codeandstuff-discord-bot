@@ -18,7 +18,6 @@ const onRegistrationMessage = (incomingMessage: Message) => {
   const message = incomingMessage.content;
 
   const extractedNames = registrationRegex.exec(message);
-  log.debug(`Received ${message} from ${channel.id}`);
 
   // Do nothing if the channel wasn't found on this server
   if (channel.id !== config.get('discord.welcome_channel') ||
