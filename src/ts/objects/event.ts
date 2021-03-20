@@ -1,5 +1,6 @@
 import {TimeZone} from './time-zone';
 import {ExpandedText} from './expanded-text';
+import {LogoDefinition} from './logo-definition';
 
 export interface Event {
   id: string,
@@ -26,6 +27,7 @@ export interface Event {
   category_id?: number,
   subcategory_id?: number,
   format_id: number,
+  logo: LogoDefinition,
 }
 
 export type Events = Array<Event>;

@@ -39,6 +39,7 @@ The bot will respond on a few events:
 
 * When someone new joins your server
 * When someone inputs a `!cas register` command in a specified channel
+* When someone inputs a `!cas event` command
 * When someone inputs a `!cas debug` command
 
 The following commands are available for interactive use:
@@ -46,6 +47,7 @@ The following commands are available for interactive use:
 | command | Description |
 | ------- | ----------- |
 | `!cas register [firstname] [lastname]` | Register yourself into the server under this name |
+| `!cas event` | Provide a list of all active events in Eventbrite |
 | `!cas debug joiner ` | Simulate a new joiner event (**DEBUG ONLY**) |
 
 ## How to install
