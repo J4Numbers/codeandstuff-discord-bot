@@ -1,0 +1,8 @@
+version: '3'
+services:
+  code-and-stuff-discord-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: config/docker-config.env
+
