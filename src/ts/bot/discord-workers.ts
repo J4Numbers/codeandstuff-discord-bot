@@ -25,17 +25,17 @@ const lookupEventGroup = async (guild: Guild, eventId: string): Promise<Role> =>
 }
 
 const manageFoundJoiner = async (message: Message, ticket: Ticket): Promise<void> => {
-  message.member?.setNickname(ticket.profile.name);
-  message.member?.roles.add(config.get('discord.attendee_role'));
+  await message.member?.setNickname(ticket.profile.name);
+  await message.member?.roles.add(config.get('discord.attendee_role'));
   const joinerChannel = await message.client.channels.fetch(config.get('discord.joined_channel'));
   if (joinerChannel instanceof TextChannel) {
     const joinedChannel = joinerChannel as TextChannel;
-    joinedChannel.send(
+    await joinedChannel.send(
       `Welcome to ${message.member}! Feel free to say hello and introduce yourself in the chat!`
     );
   }
   const eventRole = await lookupEventGroup(message.guild as Guild, ticket.event_id);
-  message.member?.roles.add(eventRole);
+  await message.member?.roles.add(eventRole);
 }
 
 const manageNotFoundJoiner = async (message: Message, name: NameDetails): Promise<void> => {
