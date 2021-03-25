@@ -7,3 +7,9 @@ src/js/
 
 .nyc_output/
 coverage/
+
+.terraform/
+*.tfstate.d/
+terraform.tfvars
+*.tfplan
+*.lock.hcl
