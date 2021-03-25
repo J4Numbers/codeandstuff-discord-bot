@@ -1,7 +1,6 @@
 import config from 'config';
 import {Client, Message, TextChannel} from 'discord.js';
 import Logger from 'bunyan';
-import {Ticket} from '../objects/ticket';
 import resolveLogger from '../logger';
 import {TicketManager} from '../tickets/ticket-manager';
 import resolveTicketManager from '../tickets';
@@ -12,7 +11,7 @@ const log: Logger = resolveLogger();
 const ticketManager: TicketManager = resolveTicketManager();
 const registrationRegex: RegExp = /^!cas\s+register\s+([^ ]+)\s+([^ ]+)$/gi;
 
-const onRegistrationMessage = (incomingMessage: Message) => {
+const onRegistrationMessage = async (incomingMessage: Message) => {
   // Retrieve the channel that the message came in on
   const channel = incomingMessage.channel;
   const message = incomingMessage.content;
@@ -29,20 +28,19 @@ const onRegistrationMessage = (incomingMessage: Message) => {
   // @ts-ignore
   const lastname = extractedNames[2];
 
-  log.debug(`Looking up tickets in current events for '${firstname} ${lastname}'`);
-  ticketManager.lookupTicketWithName({
-    firstname,
-    lastname,
-  })
-    .then((ticket: Ticket) => {
-      // Add roles and change nickname of author
-      log.info(`Found corresponding ticket for new joiner :: ${ticket.id}`);
-      return manageFoundJoiner(incomingMessage, ticket);
+  try {
+    log.debug(`Looking up tickets in current events for '${firstname} ${lastname}'`);
+    const ticket = await ticketManager.lookupTicketWithName({
+      firstname,
+      lastname,
     })
-    .catch(() => {
-      log.info(`Unable to find corresponding ticket for new joiner :: ${firstname} ${lastname}`);
-      return manageNotFoundJoiner(incomingMessage, { firstname, lastname });
-    });
+    // Add roles and change nickname of author
+    log.info(`Found corresponding ticket for new joiner :: ${ticket.id}`);
+    return manageFoundJoiner(incomingMessage, ticket);
+  } catch(e) {
+    log.info(`Unable to register new user with Eventbrite :: ${e.message}`);
+    return manageNotFoundJoiner(incomingMessage, { firstname, lastname });
+  }
 }
 
 const register = (discordClient: Client): void => {
