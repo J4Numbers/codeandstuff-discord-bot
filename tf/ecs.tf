@@ -20,7 +20,7 @@ resource "aws_ecs_task_definition" "cas-discord-definition" {
           value: var.logger-level
         }
       ],
-      image: "${data.aws_ecr_repository.discord-bot-registry.repository_url}:latest"
+      image: "${data.aws_ecr_repository.discord-bot-registry.repository_url}:1.0.0"
       logConfiguration: {
         "logDriver": "awslogs",
         "options": {
