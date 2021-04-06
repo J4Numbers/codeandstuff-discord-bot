@@ -2,6 +2,11 @@ variable "vpc-id" {
   description = "ID of the VPC to deploy to"
 }
 
+variable "deploy-version" {
+  description = "The version of the service to deploy"
+  default = "latest"
+}
+
 variable "cluster-name" {
   description = "Name of the ECS cluster"
   default = "cas-discord-cluster"
