@@ -29,8 +29,20 @@ variable "discord-joined-channel-id" {
   description = "Channel ID for the newly-joined Discord channel"
 }
 
+variable "discord-voice-channel-group-id" {
+  description = "Group id for session voice channels"
+}
+
+variable "discord-text-channel-group-id" {
+  description = "Group id for session text channels"
+}
+
 variable "discord-attendee-role-id" {
   description = "Role ID for general attendees"
+}
+
+variable "discord-mentor-role-id" {
+  description = "Role ID for mentors"
 }
 
 variable "eventbrite-token" {

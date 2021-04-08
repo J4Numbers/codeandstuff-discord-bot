@@ -7,7 +7,10 @@
         "token": "DISCORD_TOKEN",
         "welcome_channel": "DISCORD_WELCOME_CHANNEL_ID",
         "joined_channel": "DISCORD_JOINED_CHANNEL_ID",
-        "attendee_role": "DISCORD_ATTENDEE_ROLE_ID"
+        "voice_channel_group": "DISCORD_VOICE_CHANNEL_GROUP_ID",
+        "text_channel_group": "DISCORD_TEXT_CHANNEL_GROUP_ID",
+        "attendee_role": "DISCORD_ATTENDEE_ROLE_ID",
+        "mentor_role": "DISCORD_MENTOR_ROLE_ID"
     },
     "eventbrite": {
         "token": "EVENTBRITE_TOKEN",

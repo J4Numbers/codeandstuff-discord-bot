@@ -45,8 +45,20 @@ resource "aws_ecs_task_definition" "cas-discord-definition" {
           valueFrom: aws_ssm_parameter.param-discord-joined-channel-id.name
         },
         {
+          name: "DISCORD_VOICE_CHANNEL_GROUP_ID",
+          valueFrom: aws_ssm_parameter.param-discord-voice-channel-group-id.name
+        },
+        {
+          name: "DISCORD_TEXT_CHANNEL_GROUP_ID",
+          valueFrom: aws_ssm_parameter.param-discord-text-channel-group-id.name
+        },
+        {
           name: "DISCORD_ATTENDEE_ROLE_ID",
           valueFrom: aws_ssm_parameter.param-discord-attendee-role-id.name
+        },
+        {
+          name: "DISCORD_MENTOR_ROLE_ID",
+          valueFrom: aws_ssm_parameter.param-discord-mentor-role-id.name
         },
         {
           name: "EVENTBRITE_TOKEN",
