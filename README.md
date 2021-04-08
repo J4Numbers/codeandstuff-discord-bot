@@ -19,6 +19,8 @@ This bot fills/will fill the following roles:
 - Confirm that new users have signed up to any currently active events
 - Re-post newly created events from Code and Stuff
 - Manage roles for events (add general attendee or mentor role to user specifically)
+- Creates voice/text channel pairs for mentor/mentee pairings
+- Cleans down all session channels after a session
 
 [1]: https://discord.js.org/#/
 [2]: https://www.eventbrite.com/platform/api#
@@ -40,6 +42,8 @@ The bot will respond on a few events:
 * When someone new joins your server
 * When someone attempts to `@mention` the bot, or directly message it
 * When someone inputs a `!cas register` command in a specified channel
+* When an organiser or mentor inputs a `!cas pair` command
+* When an organiser or mentor inputs a `!cas clean` command
 * When someone inputs a `!cas event` command
 * When someone inputs a `!cas debug` command
 
@@ -47,9 +51,11 @@ The following commands are available for interactive use:
 
 | command | Description |
 | ------- | ----------- |
-| `!cas register [firstname] [lastname]` | Register yourself into the server under this name |
-| `!cas event` | Provide a list of all active events in Eventbrite |
+| `!cas clean` | Removes all session channels from the server |
 | `!cas debug joiner ` | Simulate a new joiner event (**DEBUG ONLY**) |
+| `!cas event` | Provide a list of all active events in Eventbrite |
+| `!cas pair @[mentor] @[mentee]` | Load a mentor/mentee session for the mentioned parties |
+| `!cas register [firstname] [lastname]` | Register yourself into the server under this name |
 
 ## How to install
 
