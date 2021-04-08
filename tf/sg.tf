@@ -1,5 +1,5 @@
-resource "aws_security_group" "ecs-default-sg" {
-  vpc_id = var.vpc-id
+resource "aws_security_group" "ecs_default_sg" {
+  vpc_id = var.vpc_id
   name   = "ecs-asg-default-sg"
 
   ingress {

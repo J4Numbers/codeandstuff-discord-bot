@@ -1,62 +1,62 @@
-resource "aws_ssm_parameter" "param-discord-token" {
+resource "aws_ssm_parameter" "param_discord_token" {
   name      = "/discord/token"
   type      = "String"
-  value     = var.discord-token
+  value     = var.discord_token
   overwrite = true
 }
 
-resource "aws_ssm_parameter" "param-discord-welcome-channel-id" {
+resource "aws_ssm_parameter" "param_discord_welcome_channel_id" {
   name      = "/discord/channel/welcome/id"
   type      = "String"
-  value     = var.discord-welcome-channel-id
+  value     = var.discord_welcome_channel_id
   overwrite = true
 }
 
-resource "aws_ssm_parameter" "param-discord-joined-channel-id" {
+resource "aws_ssm_parameter" "param_discord_joined_channel_id" {
   name      = "/discord/channel/joined/id"
   type      = "String"
-  value     = var.discord-joined-channel-id
+  value     = var.discord_joined_channel_id
   overwrite = true
 }
 
-resource "aws_ssm_parameter" "param-discord-voice-channel-group-id" {
+resource "aws_ssm_parameter" "param_discord_voice_channel_group_id" {
   name      = "/discord/channel/group/voice/id"
   type      = "String"
-  value     = var.discord-voice-channel-group-id
+  value     = var.discord_voice_channel_group_id
   overwrite = true
 }
 
-resource "aws_ssm_parameter" "param-discord-text-channel-group-id" {
+resource "aws_ssm_parameter" "param_discord_text_channel_group_id" {
   name      = "/discord/channel/group/text/id"
   type      = "String"
-  value     = var.discord-text-channel-group-id
+  value     = var.discord_text_channel_group_id
   overwrite = true
 }
 
-resource "aws_ssm_parameter" "param-discord-attendee-role-id" {
+resource "aws_ssm_parameter" "param_discord_attendee_role_id" {
   name      = "/discord/role/attendee/id"
   type      = "String"
-  value     = var.discord-attendee-role-id
+  value     = var.discord_attendee_role_id
   overwrite = true
 }
 
-resource "aws_ssm_parameter" "param-discord-mentor-role-id" {
+resource "aws_ssm_parameter" "param_discord_mentor_role_id" {
   name      = "/discord/role/mentor/id"
   type      = "String"
-  value     = var.discord-mentor-role-id
+  value     = var.discord_mentor_role_id
   overwrite = true
 }
 
-resource "aws_ssm_parameter" "param-eventbrite-token" {
+resource "aws_ssm_parameter" "param_eventbrite_token" {
   name      = "/eventbrite/token"
   type      = "String"
-  value     = var.eventbrite-token
+  value     = var.eventbrite_token
   overwrite = true
 }
 
-resource "aws_ssm_parameter" "param-eventbrite-org-id" {
+resource "aws_ssm_parameter" "param_eventbrite_org_id" {
   name      = "/eventbrite/organisation/id"
   type      = "String"
-  value     = var.eventbrite-org-id
+  value     = var.eventbrite_org_id
   overwrite = true
 }
