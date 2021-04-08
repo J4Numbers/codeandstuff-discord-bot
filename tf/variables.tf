@@ -1,42 +1,59 @@
-variable "vpc-id" {
+variable "vpc_id" {
   description = "ID of the VPC to deploy to"
 }
 
-variable "cluster-name" {
+variable "deploy_version" {
+  description = "The version of the service to deploy"
+  default     = "latest"
+}
+
+variable "cluster_name" {
   description = "Name of the ECS cluster"
-  default = "cas-discord-cluster"
+  default     = "cas-discord-cluster"
 }
 
-variable "application-debug-mode" {
+variable "application_debug_mode" {
   description = "Choose whether the application is running in debug mode"
-  default = "false"
+  default     = "false"
 }
 
-variable "discord-token" {
+variable "discord_token" {
   description = "Token for accessing the Discord API"
 }
 
-variable "discord-welcome-channel-id" {
+variable "discord_welcome_channel_id" {
   description = "Channel ID for the post-registration Discord channel"
 }
 
-variable "discord-joined-channel-id" {
+variable "discord_joined_channel_id" {
   description = "Channel ID for the newly-joined Discord channel"
 }
 
-variable "discord-attendee-role-id" {
+variable "discord_voice_channel_group_id" {
+  description = "Group id for session voice channels"
+}
+
+variable "discord_text_channel_group_id" {
+  description = "Group id for session text channels"
+}
+
+variable "discord_attendee_role_id" {
   description = "Role ID for general attendees"
 }
 
-variable "eventbrite-token" {
+variable "discord_mentor_role_id" {
+  description = "Role ID for mentors"
+}
+
+variable "eventbrite_token" {
   description = "Token for accessing the Eventbrite API"
 }
 
-variable "eventbrite-org-id" {
+variable "eventbrite_org_id" {
   description = "Eventbrite owning organisation ID"
 }
 
-variable "logger-level" {
+variable "logger_level" {
   description = "Logging level to be used on outputting logs"
-  default = "info"
+  default     = "info"
 }

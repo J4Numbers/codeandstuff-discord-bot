@@ -1,5 +1,7 @@
 # Codeandstuff Discord bot
 
+[![Deploy to Amazon ECS](https://github.com/J4Numbers/codeandstuff-discord-bot/actions/workflows/aws.yml/badge.svg?event=push)](https://github.com/J4Numbers/codeandstuff-discord-bot/actions/workflows/aws.yml)
+
 Created by @J4Numbers
 
 A bot for the Code and Stuff Discord server. This idea was born because people
@@ -18,7 +20,9 @@ This bot fills/will fill the following roles:
 - Welcome new users to the server
 - Confirm that new users have signed up to any currently active events
 - Re-post newly created events from Code and Stuff
-- Manage roles for events (all events and current event)
+- Manage roles for events (add general attendee or mentor role to user specifically)
+- Creates voice/text channel pairs for mentor/mentee pairings
+- Cleans down all session channels after a session
 
 [1]: https://discord.js.org/#/
 [2]: https://www.eventbrite.com/platform/api#
@@ -40,6 +44,8 @@ The bot will respond on a few events:
 * When someone new joins your server
 * When someone attempts to `@mention` the bot, or directly message it
 * When someone inputs a `!cas register` command in a specified channel
+* When an organiser or mentor inputs a `!cas pair` command
+* When an organiser or mentor inputs a `!cas clean` command
 * When someone inputs a `!cas event` command
 * When someone inputs a `!cas debug` command
 
@@ -47,9 +53,11 @@ The following commands are available for interactive use:
 
 | command | Description |
 | ------- | ----------- |
-| `!cas register [firstname] [lastname]` | Register yourself into the server under this name |
-| `!cas event` | Provide a list of all active events in Eventbrite |
+| `!cas clean` | Removes all session channels from the server |
 | `!cas debug joiner ` | Simulate a new joiner event (**DEBUG ONLY**) |
+| `!cas event` | Provide a list of all active events in Eventbrite |
+| `!cas pair @[mentor] @[mentee]` | Load a mentor/mentee session for the mentioned parties |
+| `!cas register [firstname] [lastname]` | Register yourself into the server under this name |
 
 ## How to install
 
@@ -75,7 +83,10 @@ module.exports = {
     token: '[MY_DISCORD_TOKEN]',
     welcome_channel: '[WELCOME_CHANNEL_ID]',
     joined_channel: '[JOINED_CHANNEL_ID]',
+    voice_channel_group: '[VOICE_CHANNEL_GROUP_ID]',
+    text_channel_group: '[TEXT_CHANNEL_GROUP_ID]',
     attendee_role: '[ATTENDEE_ROLE_ID]',
+    mentor_role: '[MENTOR_ROLE_ID]',
   },
   eventbrite: {
     token: '[MY_EVENTBRITE_TOKEN]',
@@ -92,7 +103,10 @@ and roles and clicking 'Copy ID'.
 
 * The _Welcome channel_ represents the channel that new users will join on entering the server.
 * The _Joined channel_ represents the channel that users will be placed in after verification.
-* The _Attendee role_ represents the role that users are granted after being verified.
+* The _Voice channel group_ represents the group of channels where voice channels for sessions should be generated.
+* The _Text channel group_ represents the group of channels where text channels for sessions should be generated.
+* The _Attendee role_ represents the role that attendee users are granted after being verified.
+* The _Mentor role_ represents the role that mentor users are granted after being verified.
 
 Once you have created the configuration file, then run the following commands
 to start the bot:

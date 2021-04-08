@@ -6,6 +6,8 @@ import {register as registerDirectMessageActions} from './bot/private-message-ha
 import {register as registerIntroResponderActions} from './bot/intro-responder';
 import {register as registerOnGuildMemberJoin} from './bot/join-introduction';
 import {register as registerOnMessageActions} from './bot/on-registration-message';
+import {register as registerPairingActions} from './bot/pairing-responder';
+import {register as registerCleanDownActions} from './bot/cleaning-responder';
 import {register as registerEventListActions} from './bot/event-promoter';
 import {register as registerDebugActions} from './bot/debug-handler';
 import config from 'config';
@@ -21,6 +23,8 @@ registerDirectMessageActions(discordBot);
 registerIntroResponderActions(discordBot);
 registerOnGuildMemberJoin(discordBot);
 registerOnMessageActions(discordBot);
+registerPairingActions(discordBot);
+registerCleanDownActions(discordBot);
 registerEventListActions(discordBot);
 
 if (config.get('app.debug')) {
