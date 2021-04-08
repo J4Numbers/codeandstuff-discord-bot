@@ -4,17 +4,17 @@ variable "vpc-id" {
 
 variable "deploy-version" {
   description = "The version of the service to deploy"
-  default = "latest"
+  default     = "latest"
 }
 
 variable "cluster-name" {
   description = "Name of the ECS cluster"
-  default = "cas-discord-cluster"
+  default     = "cas-discord-cluster"
 }
 
 variable "application-debug-mode" {
   description = "Choose whether the application is running in debug mode"
-  default = "false"
+  default     = "false"
 }
 
 variable "discord-token" {
@@ -29,8 +29,20 @@ variable "discord-joined-channel-id" {
   description = "Channel ID for the newly-joined Discord channel"
 }
 
+variable "discord-voice-channel-group-id" {
+  description = "Group id for session voice channels"
+}
+
+variable "discord-text-channel-group-id" {
+  description = "Group id for session text channels"
+}
+
 variable "discord-attendee-role-id" {
   description = "Role ID for general attendees"
+}
+
+variable "discord-mentor-role-id" {
+  description = "Role ID for mentors"
 }
 
 variable "eventbrite-token" {
@@ -43,5 +55,5 @@ variable "eventbrite-org-id" {
 
 variable "logger-level" {
   description = "Logging level to be used on outputting logs"
-  default = "info"
+  default     = "info"
 }

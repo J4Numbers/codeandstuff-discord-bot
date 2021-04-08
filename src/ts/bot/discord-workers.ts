@@ -1,4 +1,4 @@
-import {Message, TextChannel} from 'discord.js';
+import {GuildMember, Message, TextChannel} from 'discord.js';
 import {Ticket} from '../objects/ticket';
 import config from 'config';
 import {NameDetails} from '../objects/name-details';
@@ -7,10 +7,24 @@ import resolveLogger from '../logger';
 
 const log: Logger = resolveLogger();
 
-const manageFoundJoiner = async (message: Message, ticket: Ticket): Promise<void> => {
-  log.debug('Overriding nickname and giving new user attendee role...');
+const updateAttendee = async (message: Message, ticket: Ticket): Promise<void> => {
   await message.member?.setNickname(ticket.profile.name);
   await message.member?.roles.add(config.get('discord.attendee_role'));
+}
+
+const updateMentor = async (message: Message, ticket: Ticket): Promise<void> => {
+  await message.member?.setNickname(`${ticket.profile.name} - Mentor`);
+  await message.member?.roles.add(config.get('discord.mentor_role'));
+}
+
+const manageFoundJoiner = async (message: Message, ticket: Ticket): Promise<void> => {
+  if (ticket.ticket_class_name === 'Mentor') {
+    log.debug('Overriding nickname and giving new user mentee role...');
+    await updateMentor(message, ticket);
+  } else {
+    log.debug('Overriding nickname and giving new user attendee role...');
+    await updateAttendee(message, ticket);
+  }
   const joinerChannel = await message.client.channels.fetch(config.get('discord.joined_channel'));
   if (joinerChannel instanceof TextChannel) {
     const joinedChannel = joinerChannel as TextChannel;

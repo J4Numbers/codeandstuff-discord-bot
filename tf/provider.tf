@@ -1,4 +1,5 @@
 terraform {
+  required_version = ">= 0.12.12"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -8,7 +9,7 @@ terraform {
 
   backend "s3" {
     bucket = "uk-j4numbers-dev-terraform-state"
-    key = "cas-discord-bot.tfstate"
+    key    = "cas-discord-bot.tfstate"
     region = "eu-west-2"
   }
 }

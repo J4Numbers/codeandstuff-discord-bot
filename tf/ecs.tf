@@ -8,6 +8,7 @@ resource "aws_ecs_cluster" "cas-discord-cluster" {
 
 resource "aws_ecs_task_definition" "cas-discord-definition" {
   family = "cas-discord-definition"
+
   container_definitions = jsonencode([
     {
       environment: [
@@ -45,8 +46,20 @@ resource "aws_ecs_task_definition" "cas-discord-definition" {
           valueFrom: aws_ssm_parameter.param-discord-joined-channel-id.name
         },
         {
+          name: "DISCORD_VOICE_CHANNEL_GROUP_ID",
+          valueFrom: aws_ssm_parameter.param-discord-voice-channel-group-id.name
+        },
+        {
+          name: "DISCORD_TEXT_CHANNEL_GROUP_ID",
+          valueFrom: aws_ssm_parameter.param-discord-text-channel-group-id.name
+        },
+        {
           name: "DISCORD_ATTENDEE_ROLE_ID",
           valueFrom: aws_ssm_parameter.param-discord-attendee-role-id.name
+        },
+        {
+          name: "DISCORD_MENTOR_ROLE_ID",
+          valueFrom: aws_ssm_parameter.param-discord-mentor-role-id.name
         },
         {
           name: "EVENTBRITE_TOKEN",
@@ -59,13 +72,15 @@ resource "aws_ecs_task_definition" "cas-discord-definition" {
       ]
     }
   ])
+
   requires_compatibilities = ["EC2"]
-  execution_role_arn = aws_iam_role.cas-ecs-executor.arn
+  execution_role_arn       = aws_iam_role.cas-ecs-executor.arn
 }
 
 resource "aws_ecs_service" "cas-discord-service" {
-  name = "code-and-stuff-discord-bot-service"
-  cluster = aws_ecs_cluster.cas-discord-cluster.arn
-  task_definition = aws_ecs_task_definition.cas-discord-definition.family
-  desired_count = 1
+  name                 = "code-and-stuff-discord-bot-service"
+  cluster              = aws_ecs_cluster.cas-discord-cluster.arn
+  task_definition      = aws_ecs_task_definition.cas-discord-definition.family
+  force_new_deployment = true
+  desired_count        = 1
 }
