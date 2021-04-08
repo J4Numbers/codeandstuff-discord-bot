@@ -50,6 +50,9 @@ jobs:
     - name: Validate and plan deployment Terraform
       id: terraform-plan-validate
       env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
         TF_VAR_deploy_version: ${{ github.sha }}
         TF_VAR_vpc_id: ${{ secrets.DEPLOY_VPC_ID }}
         TF_VAR_application_debug_mode: "false"
@@ -75,4 +78,7 @@ jobs:
 
     - name: Deploy Terraform
       id: terraform-apply
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: terraform apply plan.tfplan
