@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "base-ec2-policy" {
+data "aws_iam_policy_document" "base_ec2_policy" {
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "base-ec2-policy" {
   }
 }
 
-data "aws_iam_policy_document" "base-ecs-policy" {
+data "aws_iam_policy_document" "base_ecs_policy" {
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -20,10 +20,10 @@ data "aws_iam_policy_document" "base-ecs-policy" {
   }
 }
 
-data "aws_ecr_repository" "discord-bot-registry" {
+data "aws_ecr_repository" "discord_bot_registry" {
   name = "j4numbers/code-and-stuff-discord-bot"
 }
 
-data "aws_subnet_ids" "vpc-subnet-ids" {
-  vpc_id = var.vpc-id
+data "aws_subnet_ids" "vpc_subnet_ids" {
+  vpc_id = var.vpc_id
 }
