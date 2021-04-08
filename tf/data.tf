@@ -11,8 +11,7 @@ data "aws_iam_policy_document" "base-ec2-policy" {
 
 data "aws_iam_policy_document" "base-ecs-policy" {
   statement {
-    actions = [
-      "sts:AssumeRole"]
+    actions = ["sts:AssumeRole"]
 
     principals {
       type = "Service"

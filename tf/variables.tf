@@ -4,17 +4,17 @@ variable "vpc-id" {
 
 variable "deploy-version" {
   description = "The version of the service to deploy"
-  default = "latest"
+  default     = "latest"
 }
 
 variable "cluster-name" {
   description = "Name of the ECS cluster"
-  default = "cas-discord-cluster"
+  default     = "cas-discord-cluster"
 }
 
 variable "application-debug-mode" {
   description = "Choose whether the application is running in debug mode"
-  default = "false"
+  default     = "false"
 }
 
 variable "discord-token" {
@@ -55,5 +55,5 @@ variable "eventbrite-org-id" {
 
 variable "logger-level" {
   description = "Logging level to be used on outputting logs"
-  default = "info"
+  default     = "info"
 }

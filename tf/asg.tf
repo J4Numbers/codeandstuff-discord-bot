@@ -9,9 +9,9 @@ resource "aws_launch_configuration" "cas-discord-asg-lc" {
 }
 
 resource "aws_autoscaling_group" "cas-discord-asg" {
-  name                      = "cas-discord-asg"
-  vpc_zone_identifier       = data.aws_subnet_ids.vpc-subnet-ids.ids
-  launch_configuration      = aws_launch_configuration.cas-discord-asg-lc.name
+  name                 = "cas-discord-asg"
+  vpc_zone_identifier  = data.aws_subnet_ids.vpc-subnet-ids.ids
+  launch_configuration = aws_launch_configuration.cas-discord-asg-lc.name
 
   desired_capacity          = 1
   min_size                  = 1

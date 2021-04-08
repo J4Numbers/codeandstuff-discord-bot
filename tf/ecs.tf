@@ -8,6 +8,7 @@ resource "aws_ecs_cluster" "cas-discord-cluster" {
 
 resource "aws_ecs_task_definition" "cas-discord-definition" {
   family = "cas-discord-definition"
+
   container_definitions = jsonencode([
     {
       environment: [
@@ -71,13 +72,15 @@ resource "aws_ecs_task_definition" "cas-discord-definition" {
       ]
     }
   ])
+
   requires_compatibilities = ["EC2"]
-  execution_role_arn = aws_iam_role.cas-ecs-executor.arn
+  execution_role_arn       = aws_iam_role.cas-ecs-executor.arn
 }
 
 resource "aws_ecs_service" "cas-discord-service" {
-  name = "code-and-stuff-discord-bot-service"
-  cluster = aws_ecs_cluster.cas-discord-cluster.arn
-  task_definition = aws_ecs_task_definition.cas-discord-definition.family
-  desired_count = 1
+  name                 = "code-and-stuff-discord-bot-service"
+  cluster              = aws_ecs_cluster.cas-discord-cluster.arn
+  task_definition      = aws_ecs_task_definition.cas-discord-definition.family
+  force_new_deployment = true
+  desired_count        = 1
 }
