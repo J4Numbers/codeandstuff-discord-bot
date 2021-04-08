@@ -15,7 +15,7 @@ const onPairingMessage = async (incomingMessage: Message) => {
 
   // Attempt to resolve the included people
   const mentionedUsers = incomingMessage.mentions.members as Collection<string, GuildMember>;
-  const channelName = mentionedUsers.map((member) => member.nickname).join('-');
+  const channelName = mentionedUsers.map((member) => member.nickname?.split(' ')[0]).join('-and-');
   log.info(`Creating a new pair channel between ${mentionedUsers.map(member => member.id).join(' and ')}`);
 
   try {

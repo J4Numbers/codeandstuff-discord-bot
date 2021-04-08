@@ -15,11 +15,11 @@ const onCleanDownMessage = async (incomingMessage: Message) => {
   log.info('Cleaning down all pairing channels...');
 
   try {
-    // Generate voice and text channels
+    // Clean down all text and voice channels
     const guild = incomingMessage.guild as Guild;
-    const voiceChannels = guild.channels.cache.get('discord.voice_channel_group') as CategoryChannel;
+    const voiceChannels = guild.channels.cache.get(config.get('discord.voice_channel_group')) as CategoryChannel;
     const voiceChannelDeletions = voiceChannels.children.map((channel) => channel.delete('Cleaning down all channels'));
-    const textChannels = guild.channels.cache.get('discord.text_channel_group') as CategoryChannel;
+    const textChannels = guild.channels.cache.get(config.get('discord.text_channel_group')) as CategoryChannel;
     const textChannelDeletions = textChannels.children.map((channel) => channel.delete('Cleaning down all channels'));
 
     await Promise.all([...voiceChannelDeletions, ...textChannelDeletions]);
