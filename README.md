@@ -1,5 +1,7 @@
 # Codeandstuff Discord bot
 
+[![Deploy to Amazon ECS](https://github.com/J4Numbers/codeandstuff-discord-bot/actions/workflows/aws.yml/badge.svg?event=push)](https://github.com/J4Numbers/codeandstuff-discord-bot/actions/workflows/aws.yml)
+
 Created by @J4Numbers
 
 A bot for the Code and Stuff Discord server. This idea was born because people
