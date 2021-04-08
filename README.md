@@ -18,7 +18,7 @@ This bot fills/will fill the following roles:
 - Welcome new users to the server
 - Confirm that new users have signed up to any currently active events
 - Re-post newly created events from Code and Stuff
-- Manage roles for events (all events and current event)
+- Manage roles for events (add general attendee or mentor role to user specifically)
 
 [1]: https://discord.js.org/#/
 [2]: https://www.eventbrite.com/platform/api#
@@ -75,7 +75,10 @@ module.exports = {
     token: '[MY_DISCORD_TOKEN]',
     welcome_channel: '[WELCOME_CHANNEL_ID]',
     joined_channel: '[JOINED_CHANNEL_ID]',
+    voice_channel_group: '[VOICE_CHANNEL_GROUP_ID]',
+    text_channel_group: '[TEXT_CHANNEL_GROUP_ID]',
     attendee_role: '[ATTENDEE_ROLE_ID]',
+    mentor_role: '[MENTOR_ROLE_ID]',
   },
   eventbrite: {
     token: '[MY_EVENTBRITE_TOKEN]',
@@ -92,7 +95,10 @@ and roles and clicking 'Copy ID'.
 
 * The _Welcome channel_ represents the channel that new users will join on entering the server.
 * The _Joined channel_ represents the channel that users will be placed in after verification.
-* The _Attendee role_ represents the role that users are granted after being verified.
+* The _Voice channel group_ represents the group of channels where voice channels for sessions should be generated.
+* The _Text channel group_ represents the group of channels where text channels for sessions should be generated.
+* The _Attendee role_ represents the role that attendee users are granted after being verified.
+* The _Mentor role_ represents the role that mentor users are granted after being verified.
 
 Once you have created the configuration file, then run the following commands
 to start the bot:
