@@ -1,5 +1,13 @@
 module.exports = {
   app: {
+    server: {
+      http2: {
+        enabled: false,
+        key: '/path/to/key.pem',
+        cert: '/path/to/cert.pem',
+      },
+      port: 8443,
+    },
     name: 'codeandstuff-discord-bot',
     debug: false,
   },
@@ -16,6 +24,7 @@ module.exports = {
     token: undefined,
     org_id: undefined,
   },
+  webhooks: [],
   logger: {
     level: 'info',
   },

@@ -1,2 +1,2 @@
-module.exports = require('@j4numbers/eslint-base-config');
+module.exports = require('@j4numbers/eslint-typescript-config');
 

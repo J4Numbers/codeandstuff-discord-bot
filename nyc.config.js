@@ -1,18 +1,14 @@
 module.exports = {
+  _reportDir: './coverage/ts/',
   lines: 80,
   statements: 80,
   functions: 80,
   branches: 80,
   'check-coverage': false,
-  exclude: [
-    'nyc.config.js',
-    '.eslintrc.js',
-    'coverage/**',
-    'node_modules/**',
-    'test/**',
-    'src/js/**',
-    'config/**',
+  include: [
+    'src/**/*.ts',
   ],
+  all: true,
   reporter: [
     'lcov',
     'cobertura',

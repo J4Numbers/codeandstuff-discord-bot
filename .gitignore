@@ -3,7 +3,7 @@ node_modules/
 .idea/
 *.iml
 
-src/js/
+out/
 
 .nyc_output/
 coverage/
