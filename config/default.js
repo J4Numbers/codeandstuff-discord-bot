@@ -24,7 +24,9 @@ module.exports = {
     token: undefined,
     org_id: undefined,
   },
-  webhooks: [],
+  slack: {
+    webhook: undefined
+  },
   logger: {
     level: 'info',
   },

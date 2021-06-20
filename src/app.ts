@@ -2,7 +2,6 @@ import type Logger from 'bunyan';
 import type { Client } from 'discord.js';
 import config from 'config';
 
-import type { DownstreamPost } from './objects/downstream-posts/downstream-post';
 import resolveLogger from './logger';
 import resolveDiscordBot from './bot';
 import { register as registerDirectMessageActions } from './bot/private-message-handler';
@@ -29,11 +28,4 @@ registerEventListActions(discordBot);
 
 if (config.get('app.debug')) {
   registerDebugActions(discordBot);
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-if ((config.get('webhooks') as Array<DownstreamPost>).length > 0) {
-  logger.info('Webhooks detected... Exposing webhook endpoint.');
-  // const server = loadServer(config.get('app'));
-  // loadWebhookResponders(config.get('webhooks'), discordBot);
 }
