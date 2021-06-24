@@ -68,6 +68,10 @@ resource "aws_ecs_task_definition" "cas_discord_definition" {
         {
           name: "EVENTBRITE_ORGANISATION_ID",
           valueFrom: aws_ssm_parameter.param_eventbrite_org_id.name
+        },
+        {
+          name: "SLACK_WEBHOOK",
+          valueFrom: aws_ssm_parameter.param_slack_webhook.name
         }
       ]
     }

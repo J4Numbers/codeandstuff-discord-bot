@@ -16,6 +16,9 @@
         "token": "EVENTBRITE_TOKEN",
         "org_id": "EVENTBRITE_ORGANISATION_ID"
     },
+    "slack": {
+        "webhook": "SLACK_WEBHOOK"
+    },
     "logger": {
         "level": "LOGGER_LEVEL"
     }

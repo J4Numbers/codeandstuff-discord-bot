@@ -1,12 +1,12 @@
-import type { Client, Message } from 'discord.js';
+import type { Client, Message, DMChannel, NewsChannel, TextChannel } from 'discord.js';
 import type Logger from 'bunyan';
-import {Channel, DMChannel, MessageEmbed, NewsChannel, TextChannel} from 'discord.js';
+import { MessageEmbed } from 'discord.js';
 
 import type { StandardEventLookup } from '../events/standard-event-lookup';
+import type { Event } from '../objects/event';
 import resolveLogger from '../logger';
 import resolveEventLookup from '../events';
-import {Event} from '../objects/event';
-import {publishEventMessage} from '../slack/slack_handler';
+import { publishEventMessage } from '../slack/slack_handler';
 
 const log: Logger = resolveLogger();
 const eventManager: StandardEventLookup = resolveEventLookup();

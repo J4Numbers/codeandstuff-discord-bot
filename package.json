@@ -9,8 +9,7 @@
     "quality:eslint": "eslint . --ext .ts,.js",
     "quality:eslint:fix": "eslint . --fix",
     "start": "node out/app.js",
-    "test": "npm run test:js && npm run test:ts",
-    "test:js": "nyc --all mocha --config test/.js.mocharc.js",
+    "test": "npm run test:ts",
     "test:ts": "TS_NODE_PROJECT=./tsconfig.json nyc mocha --config test/.ts.mocharc.js src/**/*.ts",
     "test:coverage": "nyc check-coverage"
   },

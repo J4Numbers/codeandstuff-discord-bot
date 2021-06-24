@@ -69,6 +69,8 @@ jobs:
         TF_VAR_eventbrite_token: ${{ secrets.DEPLOY_EVENTBRITE_TOKEN }}
         TF_VAR_eventbrite_org_id: "296630288170"
 
+        TF_VAR_slack_webhook: ${{ secrets.DEPLOY_SLACK_WEBHOOK }}
+
         TF_VAR_logger_level: "info"
       run: |
         cd tf/

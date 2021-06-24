@@ -60,3 +60,10 @@ resource "aws_ssm_parameter" "param_eventbrite_org_id" {
   value     = var.eventbrite_org_id
   overwrite = true
 }
+
+resource "aws_ssm_parameter" "param_slack_webhook" {
+  name      = "/slack/events/webhook"
+  type      = "String"
+  value     = var.slack_webhook
+  overwrite = true
+}

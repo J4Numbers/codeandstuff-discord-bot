@@ -53,6 +53,10 @@ variable "eventbrite_org_id" {
   description = "Eventbrite owning organisation ID"
 }
 
+variable "slack_webhook" {
+  description = "Webhook to be used when talking to Slack to send a message out"
+}
+
 variable "logger_level" {
   description = "Logging level to be used on outputting logs"
   default     = "info"
