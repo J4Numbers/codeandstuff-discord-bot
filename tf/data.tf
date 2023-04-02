@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "base_ecs_policy" {
 }
 
 data "aws_ecr_repository" "discord_bot_registry" {
-  name = "j4numbers/code-and-stuff-discord-bot"
+  name = var.ecr_repo_name
 }
 
 data "aws_subnet_ids" "vpc_subnet_ids" {
