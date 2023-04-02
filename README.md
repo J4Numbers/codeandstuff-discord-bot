@@ -1,7 +1,5 @@
 # Codeandstuff Discord bot
 
-[![Deploy to Amazon ECS](https://github.com/J4Numbers/codeandstuff-discord-bot/actions/workflows/aws.yml/badge.svg?branch=main)](https://github.com/J4Numbers/codeandstuff-discord-bot/actions/workflows/aws.yml)
-
 Created by @J4Numbers
 
 A bot for the Code and Stuff Discord server. This idea was born because people
@@ -10,6 +8,17 @@ before they can be checked off against the event list.
 
 This process is completely manual at the moment (ignoring its relevance in a
 non-time-based service), but can be automated _with the power of technology_.
+
+> Due to how the online events are no-longer being run at this point in time,
+> **this repository has been archived** until further notice. This means that
+> the service is no longer running as of the **2nd of April, 2023**.
+>
+> The code itself is still available for future users to pick up themselves
+> or to take inspiration from, and the Terraform has been mostly anonymised from
+> the owner's account.
+>
+> Thank you for reading. Any further queries can be raised with the owner
+> privately if required.
 
 ## What does it do
 
