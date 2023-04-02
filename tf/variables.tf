@@ -12,6 +12,10 @@ variable "cluster_name" {
   default     = "cas-discord-cluster"
 }
 
+variable "ecr_repo_name" {
+  description = "Name of the ECR repository to store images inside"
+}
+
 variable "application_debug_mode" {
   description = "Choose whether the application is running in debug mode"
   default     = "false"
