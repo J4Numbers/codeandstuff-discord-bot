@@ -20,6 +20,10 @@ data "aws_iam_policy_document" "base_ecs_policy" {
   }
 }
 
+data "aws_ssm_parameter" "ecs_current_image" {
+  name = "/aws/service/ecs/optimized-ami/amazon-linux-2/recommended"
+}
+
 data "aws_ecr_repository" "discord_bot_registry" {
   name = var.ecr_repo_name
 }
